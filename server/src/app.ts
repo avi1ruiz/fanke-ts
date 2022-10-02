@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import session from 'express-session'
 import passport from 'passport'
-
+import cors from 'cors'
 import envs from './config'
 import authRoutes from './routes/auth.routes'
 import './libs/passport'
@@ -20,6 +20,7 @@ app.set("port", envs.SERVER_PORT)
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors())
 app.use(session({
     secret: envs.SESSION_SECRET,
     resave: false,
