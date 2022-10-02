@@ -1,10 +1,9 @@
-import { Register } from "./auth/register";
+import { NavBar } from "./components/home/navigation";
 
 function App() {
-  return(
+  return (
     <div>
-      <h1>Hola React!!</h1>
-      <Register/>
+      <NavBar />
     </div>
   )
 }

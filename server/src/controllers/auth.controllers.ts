@@ -36,14 +36,14 @@ export const register = async (req: Request, res: Response) => {
 }
 
 export const login = (req: Request, res: Response) => {
-    const user = <ReqUser>req.user;
+    const user = <ReqUser> req.user;
 
     try {
         const token = jwt.sign({ id: user._id, username: user.username }, envs.JWT_SECRET, {
             expiresIn: "1h",
         })
 
-        res.status(200).json(token)
+        res.status(200).json({token: token})
     } catch (error) {
         res.status(400).json(error)
     }
