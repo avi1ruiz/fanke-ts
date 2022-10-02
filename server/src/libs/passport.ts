@@ -1,11 +1,30 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import User from "../models/user";
+import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
+import User, { IUser } from "../models/user";
+import envs from "../config";
 
 type UserExpress = {
     _id: string,
     username: string
 }
+
+
+passport.use(new JwtStrategy({
+    jwtFromRequest: ExtractJwt.fromHeader('token'),
+    secretOrKey: envs.JWT_SECRET,
+}, async (jwt_payload, done) => {
+    try {
+
+        const user = <IUser> await User.findOne({ id: jwt_payload._id })
+        if (!user) done(null, false)
+
+        done(null, user)
+    } catch (error) {
+        done(error)
+    }
+
+}))
 
 passport.use(
     new LocalStrategy(
