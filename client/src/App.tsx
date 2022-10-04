@@ -1,7 +1,7 @@
-import { Login } from "./components/auth/login";
-import { Register } from "./components/auth/register";
-import { AddCard } from "./components/cards/add";
-import { ListCards } from "./components/cards/list";
+import { Login } from "./components/home/login";
+import { Register } from "./components/home/register";
+import { AddCard } from "./components/user/add";
+import { ListCards } from "./components/user/list";
 
 function App() {
   return (

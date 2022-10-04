@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { DeleteCard } from "./delete";
+import { UpdateCard } from "./update";
 
 interface Card {
     question: string,
@@ -14,7 +16,7 @@ export function ListCards() {
     async function getCards() {
         const response = await axios({
             method: 'get',
-            headers: { 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ4NjU4OTAsImV4cCI6MTY2NDg2OTQ5MH0.-u-wBLEOp3VP_LRerwaYIXrMQQ7wnBnkrKLGN573f4A' },
+            headers: { 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ5MjI2MDUsImV4cCI6MTY2NDkyNjIwNX0.uCmdrZfRPyV_H2ZKu8t66zOAH2CQTMHGpXL4QztL0Yo' },
             url: 'http://localhost:4000/cards/all'
         })
         setCards(response.data)
@@ -31,6 +33,10 @@ export function ListCards() {
                     return (<div key={card._id}>
                         <h1>{card.question}</h1>
                         <p>{card.answer}</p>
+                        <div>
+                            <DeleteCard CardID={card._id}/>
+                            <UpdateCard CardID={card._id}/>
+                        </div>
                     </div>)
                 })
             }

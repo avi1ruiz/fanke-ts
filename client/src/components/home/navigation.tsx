@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material"
 import { useState } from "react";
-import { Login } from "../auth/login";
-import { Register } from "../auth/register";
+import { Login } from "./login";
+import { Register } from "./register";
 import './navigation.css'
 
 function LoginModal() {

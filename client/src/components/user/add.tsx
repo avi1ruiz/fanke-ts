@@ -12,7 +12,7 @@ export function AddCard() {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
-                'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ4NjU4OTAsImV4cCI6MTY2NDg2OTQ5MH0.-u-wBLEOp3VP_LRerwaYIXrMQQ7wnBnkrKLGN573f4A'
+                'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ5MjI2MDUsImV4cCI6MTY2NDkyNjIwNX0.uCmdrZfRPyV_H2ZKu8t66zOAH2CQTMHGpXL4QztL0Yo'
             },
             data: {
                 questionForm: questionForm,
