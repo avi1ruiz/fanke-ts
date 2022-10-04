@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react"
 import envs from "../../config";
-import './auth.css'
 
 export function Login() {
 

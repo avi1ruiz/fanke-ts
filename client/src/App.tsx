@@ -1,9 +1,15 @@
-import { NavBar } from "./components/home/navigation";
+import { Login } from "./components/auth/login";
+import { Register } from "./components/auth/register";
+import { AddCard } from "./components/cards/add";
+import { ListCards } from "./components/cards/list";
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <Login/>
+      <Register/>
+      <AddCard />
+      <ListCards />
     </div>
   )
 }

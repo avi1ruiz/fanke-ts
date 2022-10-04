@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios';
 import envs from '../../config';
-import './auth.css'
 
 //import { } from 'react-icons/fa'
 

@@ -4,7 +4,9 @@ import passport from 'passport'
 
 const router: Router = Router();
 
-router.post('/auth/login', passport.authenticate('local'), login)
+router.post('/auth/login', passport.authenticate('local', {
+   session: false 
+}), login)
 
 router.post('/auth/register', register)
 

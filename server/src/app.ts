@@ -7,6 +7,7 @@ import passport from 'passport'
 import cors from 'cors'
 import envs from './config'
 import authRoutes from './routes/auth.routes'
+import cardsRoutes from './routes/cards.routes'
 import './libs/passport'
 // CONFIGURACIONES
 
@@ -32,6 +33,7 @@ app.use(passport.session());
 // RUTAS
 
 app.use(authRoutes)
+app.use(cardsRoutes)
 
 // EXPORTAR EXPRESS
 export default app;

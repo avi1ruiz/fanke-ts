@@ -1,18 +1,29 @@
 import { Request, Response } from "express";
-import card from "models/card";
+import jwt from 'jsonwebtoken';
+import card from "../models/card";
 
 type ReqUser = {
     _id: string,
     username: string
 }
 
-export const addCard = (req: Request, res: Response) => {
-    const user = <ReqUser>req.user;
+async function getDataUser(token: string): Promise<ReqUser> {
+    const data = <ReqUser> await jwt.verify(token, 'secret')
+    return {
+        username: data.username,
+        _id: data._id
+    }
+}
+
+
+export const addCard = async (req: Request, res: Response) => {
+
+    const {username} = await getDataUser(req.header('token') as string)
     const { questionForm, answerForm } = req.body
 
     try {
         const newCard = new card({
-            username: user.username,
+            username: username,
             question: questionForm,
             answer: answerForm
         })
@@ -25,14 +36,14 @@ export const addCard = (req: Request, res: Response) => {
     }
 }
 
-export const findCards = (req: Request, res: Response) => {
+export const findCards = async (req: Request, res: Response) => {
 
-    const user = <ReqUser>req.user;
+    const {username} = await getDataUser(req.header('token') as string)
 
     try {
-        const cardsFind = card.find({ username: user.username }).lean
+        const cards = await card.find({ username: username }).lean()
 
-        res.status(200).json(cardsFind)
+        res.status(200).json(cards)
     } catch (error) {
         res.status(200).json(error)
     }
@@ -40,10 +51,10 @@ export const findCards = (req: Request, res: Response) => {
 }
 
 export const deleteCard = (req: Request, res: Response) => {
-    const { _id } = req.body
+    const { id } = req.params
 
     try {
-        card.findByIdAndDelete(_id)
+        card.findByIdAndDelete(id)
 
         res.status(200).json({ state: true })
     } catch (error) {
@@ -52,11 +63,12 @@ export const deleteCard = (req: Request, res: Response) => {
 }
 
 export const updateCard = (req: Request, res: Response) => {
-    const { questionForm, answerForm, _id } = req.body
+    const { questionForm, answerForm } = req.body
+    const { id } = req.params;
 
     try {
 
-        card.findByIdAndUpdate(_id,
+        card.findByIdAndUpdate(id,
             {
                 question: questionForm,
                 answer: answerForm
