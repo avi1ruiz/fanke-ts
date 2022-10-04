@@ -50,11 +50,11 @@ export const findCards = async (req: Request, res: Response) => {
 
 }
 
-export const deleteCard = (req: Request, res: Response) => {
+export const deleteCard = async (req: Request, res: Response) => {
     const { id } = req.params
 
     try {
-        card.findByIdAndDelete(id)
+        await card.findByIdAndDelete(id)
 
         res.status(200).json({ state: true })
     } catch (error) {
@@ -62,13 +62,13 @@ export const deleteCard = (req: Request, res: Response) => {
     }
 }
 
-export const updateCard = (req: Request, res: Response) => {
+export const updateCard = async (req: Request, res: Response) => {
     const { questionForm, answerForm } = req.body
     const { id } = req.params;
 
     try {
 
-        card.findByIdAndUpdate(id,
+        await card.findByIdAndUpdate(id,
             {
                 question: questionForm,
                 answer: answerForm
