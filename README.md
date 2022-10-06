@@ -1,4 +1,4 @@
-## Anki TS (Work in Progress)
+## Fanke TS (Work in Progress)
 
 Versión simple de la aplicación de estudio Anki
 

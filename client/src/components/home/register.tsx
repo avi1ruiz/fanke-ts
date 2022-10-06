@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios';
 import envs from '../../config';
-import '../../styles/bootstrap.min.css'
 
-//import { } from 'react-icons/fa'
 
 export function Register() {
 

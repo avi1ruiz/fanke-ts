@@ -1,3 +1,4 @@
+import {FaEdit} from 'react-icons/fa'
 import axios from 'axios'
 import { Modal, Box } from '@mui/material';
 import { useState } from 'react';
@@ -28,6 +29,8 @@ function UpdateForm({ CardID }: CardProps) {
         if (response.data.state) {
             alert('Tarjeta actualizada')
         }
+        window.location.reload()
+
     }
 
     return (
@@ -57,7 +60,7 @@ export function UpdateCard({ CardID }: CardProps) {
 
     return (
         <div>
-            <button onClick={() => handleOpen()}>Update</button>
+            <button className='btn btn-info' onClick={() => handleOpen()}> <FaEdit/> </button>
             <Modal open={open} onClose={handleClose}>
                 <Box>
                     <UpdateForm CardID={CardID} />

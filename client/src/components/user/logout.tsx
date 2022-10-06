@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { FaArrowCircleRight } from 'react-icons/fa'
 
 export function Logout() {
 
@@ -11,10 +12,10 @@ export function Logout() {
 
     return (
         <>
-            <button onClick={(e) => {
+            <button className="btn btn-warning" onClick={(e) => {
                 e.preventDefault();
                 handleLogout()
-            }}>Logout</button>
+            }}> <FaArrowCircleRight/> </button>
         </>
     )
 }

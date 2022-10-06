@@ -12,7 +12,6 @@ interface Card {
 export function ListCards() {
 
     const token = localStorage.getItem('token')
-
     const [cards, setCards] = useState<Card[]>([]);
 
     async function getCards() {
@@ -26,23 +25,32 @@ export function ListCards() {
 
     useEffect(() => {
         getCards()
-    })
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <>
-            {
-                cards.map(card => {
-                    return (<div key={card._id}>
-                        <h1>{card.question}</h1>
-                        <p>{card.answer}</p>
-                        <div>
-                            <DeleteCard CardID={card._id}/>
-                            <UpdateCard CardID={card._id}/>
-                        </div>
-                    </div>)
-                })
-            }
-        </>
+        <div className="container">
+            <div className="row row-cols-4">
+                {
+                    cards.map(card => {
+                        return (
+                            <div key={card._id} className="col-md-4 d-flex justify-content-center">
+                                <div className="card" style={{ width: "15rem" }}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{card.question}</h5>
+                                        <p className="card-text">{card.answer}</p>
+                                        <div className="btn-group">
+                                            <DeleteCard CardID={card._id} />
+                                            <UpdateCard CardID={card._id} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+
     )
 
 }

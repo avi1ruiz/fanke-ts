@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { FaEraser } from 'react-icons/fa'
 
 interface CardProps {
     CardID: string,
@@ -20,12 +21,14 @@ export function DeleteCard({CardID}: CardProps) {
         } else {
             alert("Hubo un problema")
         }
+
+        window.location.reload()
     }
 
     return(
-        <button onClick={() => {
+        <button className='btn btn-danger' onClick={() => {
             handleDelete()
-        }}>Eliminar</button>
+        }}> <FaEraser/> </button>
     )
 
 }

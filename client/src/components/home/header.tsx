@@ -2,8 +2,6 @@ import { Box, Modal } from "@mui/material"
 import { useState } from "react";
 import { Login } from "./login";
 import { Register } from "./register";
-import '../../styles/modal.css'
-import '../../styles/bootstrap.min.css'
 
 function LoginModal() {
     const [open, setOpen] = useState(false);
@@ -50,7 +48,7 @@ export function Header() {
     return (
         <header className="mb-auto">
             <div>
-                <h3 className="float-md-start mb-0">ANKI</h3>
+                <h3 className="float-md-start mb-0">FANKE TS</h3>
                 <nav className="nav nav-masthead justify-content-center float-md-end">
                     <RegisterModal/>
                     <LoginModal/>

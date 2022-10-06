@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { UserPage } from "./pages/UserPage";
 import './styles/index.css'
+import './styles/bootstrap.min.css'
+import './styles/modal.css'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
