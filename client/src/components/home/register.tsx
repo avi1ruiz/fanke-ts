@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios';
 import envs from '../../config';
+import '../../styles/bootstrap.min.css'
 
 //import { } from 'react-icons/fa'
 
@@ -34,26 +35,41 @@ export function Register() {
     }
 
     return (
-        <>
-            <form className='authForm'>
-                <label className='labelForm' >Usuario</label>
-                <input className='inputForm' type="text" name="username" onChange={(e) => setUsername(e.target.value)} />
-                
-                <label className='labelForm' >Correo Electronico</label>
-                <input className='inputForm' type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                
-                <label className='labelForm' >Contraseña</label>
-                <input className='inputForm' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-                
-                <label className='labelForm' >Confirmar contraseña</label>
-                <input className='inputForm' type="password" name="confirm" onChange={(e) => setConfirm(e.target.value)} />
+        <form>
+            <div className="form-group">
 
-                <button className='btnSub' onClick={(e) => {
-                    e.preventDefault();
-                    handleSubmit();
-                }}>Register</button>
-            </form>
-        </>
+                <label>Usuario</label>
+                <input className='form-control' type="text" name="username" onChange={(e) => setUsername(e.target.value)} />
+
+            </div>
+            <div className="form-group my-2" >
+                <label>Correo Electronico</label>
+                <input className='form-control' type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+
+            </div>
+            <div className="form-group my-2">
+
+                <label>Contraseña</label>
+                <input className='form-control' type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+
+            </div>
+            <div className="form-group">
+
+                <label>Confirmar contraseña</label>
+                <input className='form-control' type="password" name="confirm" onChange={(e) => setConfirm(e.target.value)} />
+
+            </div>
+
+            <div className="container">
+                <div className="col-md-12 text-center">
+                    <button className='btn btn-primary mt-4' onClick={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}>Registrarme</button>
+                </div>
+            </div>
+
+        </form>
     )
 
 }

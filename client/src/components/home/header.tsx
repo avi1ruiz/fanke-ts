@@ -2,7 +2,8 @@ import { Box, Modal } from "@mui/material"
 import { useState } from "react";
 import { Login } from "./login";
 import { Register } from "./register";
-import './navigation.css'
+import '../../styles/modal.css'
+import '../../styles/bootstrap.min.css'
 
 function LoginModal() {
     const [open, setOpen] = useState(false);
@@ -11,7 +12,7 @@ function LoginModal() {
 
     return (
         <div>
-            <button onClick={() => handleOpen()}>Login</button>
+            <button className="btn btn-info" onClick={() => handleOpen()}>Inicia Sesión</button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -32,7 +33,7 @@ function RegisterModal() {
 
     return (
         <div>
-            <button onClick={() => handleOpen()}>Register</button>
+            <button className="btn btn-info" onClick={() => handleOpen()}>Registrate!</button>
             <Modal open={open} onClose={handleClose}>
                 <Box className="modalBox">
                     <h1>Registro de Usuario</h1>
@@ -44,19 +45,18 @@ function RegisterModal() {
 
 }
 
-
-export function NavBar() {
+export function Header() {
 
     return (
-        <nav>
-            <h1 className="navBrand">ANKI-TS</h1>
-
-            <ul className="navList">
-                <li>About</li>
-                <li><LoginModal /></li>
-                <li><RegisterModal /></li>
-            </ul>
-        </nav>
+        <header className="mb-auto">
+            <div>
+                <h3 className="float-md-start mb-0">ANKI</h3>
+                <nav className="nav nav-masthead justify-content-center float-md-end">
+                    <RegisterModal/>
+                    <LoginModal/>
+                </nav>
+            </div>
+        </header>
     )
 
 }

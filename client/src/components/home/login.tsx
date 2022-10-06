@@ -1,3 +1,4 @@
+import '../../styles/bootstrap.min.css'
 import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
@@ -9,7 +10,7 @@ export function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    async function handleSubmit() {
+    async function handleLogin() {
 
         const response = await axios({
             method: 'post',
@@ -29,20 +30,27 @@ export function Login() {
     }
 
     return (
-        <>
-            <form>
-                <label className='labelForm'>Correo Electronico</label>
-                <input className='inputForm' type="email" name="emailForm" onChange={(e) => setEmail(e.target.value)} />
+        <form>
 
-                <label className='labelForm'>Contraseña</label>
-                <input className='inputForm' type="password" name="passwordForm" onChange={(e) => setPassword(e.target.value)} />
+            <div className="form-group">
+                <label>Email</label>
+                <input type="email" name="email" className="form-control" onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="form-group my-2">
+                <label>Contraseña</label>
+                <input type="password" name="password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
+            </div>
 
-                <button className='btnSub' onClick={(e) => {
-                    e.preventDefault()
-                    handleSubmit()
-                }}>Login</button>
-            </form>
-        </>
+            <div className="container">
+                <div className="col-md-12 text-center">
+                    <button type="submit" className="btn btn-success mt-2" onClick={(e) => {
+                        e.preventDefault()
+                        handleLogin()
+                    }}>Iniciar Sesión</button>
+                </div>
+            </div>
+
+        </form>
     )
 
 }

@@ -1,10 +1,12 @@
-import { NavBar } from "../components/home/navigation"
-import { HomeMessage } from "../components/home/presentation"
+import { Brand } from "../components/home/main"
+import { Header } from "../components/home/header"
+import { Footer } from "../components/home/footer"
 export function HomePage() {
     return(
-        <>
-            <NavBar/>
-            <HomeMessage/>
-        </>
+        <div className="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <Header/>
+            <Brand />
+            <Footer/>
+        </div>
     )
 }
