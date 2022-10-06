@@ -3,6 +3,7 @@ import { useState } from "react"
 
 export function AddCard() {
 
+    const token = localStorage.getItem('token')
     const [questionForm, setQuestionForm] = useState("");
     const [answerForm, setAnswerForm] = useState("");
 
@@ -12,7 +13,7 @@ export function AddCard() {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
-                'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ5MjI2MDUsImV4cCI6MTY2NDkyNjIwNX0.uCmdrZfRPyV_H2ZKu8t66zOAH2CQTMHGpXL4QztL0Yo'
+                'token': `${token}`
             },
             data: {
                 questionForm: questionForm,

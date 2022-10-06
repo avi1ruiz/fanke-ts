@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import envs from "../../config";
 
 export function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     async function handleSubmit() {
-        
+
         const response = await axios({
             method: 'post',
             headers: { 'content-type': 'application/json' },
@@ -16,10 +18,13 @@ export function Login() {
                 emailForm: email,
                 passwordForm: password
             },
-            url: envs.LOGIN_URI 
+            url: envs.LOGIN_URI
         })
+        const token = response.data.token
 
-        console.log(response.data.token)
+        localStorage.setItem('token', token)
+
+        navigate('/main')
 
     }
 

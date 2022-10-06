@@ -11,12 +11,14 @@ interface Card {
 
 export function ListCards() {
 
+    const token = localStorage.getItem('token')
+
     const [cards, setCards] = useState<Card[]>([]);
 
     async function getCards() {
         const response = await axios({
             method: 'get',
-            headers: { 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2JjNDQwM2I2ZTg2NWI1OGQ2NDk2NCIsInVzZXJuYW1lIjoidGVzdDIiLCJpYXQiOjE2NjQ5MjI2MDUsImV4cCI6MTY2NDkyNjIwNX0.uCmdrZfRPyV_H2ZKu8t66zOAH2CQTMHGpXL4QztL0Yo' },
+            headers: { 'token': `${token}` },
             url: 'http://localhost:4000/cards/all'
         })
         setCards(response.data)
@@ -24,7 +26,7 @@ export function ListCards() {
 
     useEffect(() => {
         getCards()
-    }, [])
+    })
 
     return (
         <>
